@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML> <HEAD>
+<TITLE>Example3</TITLE>
+</HEAD>
+
+<BODY>
+<H1 ALIGN=CENTER>Example 3</H1>
+This is an example of <I>real</I> data (courtesy of
+<A HREF=http://www-igpp.llnl.gov/people/gregg.html>Michael Gregg</A>)<BR>
+The data is stored in a file on the server and is
+retrieved by the applet. There are approximately 2500 data points in the
+file.
+<P>
+This applet uses the G2Dint class to build the plot. This allows the user
+some interactive control over the plot and the ability to retrieve data points.
+<P>
+<DL>
+  <DT><B><FONT COLOR="#FF00FF">Mouse Down, Drag, Up</FONT></B>
+  <DD>By pressing the mouse button and dragging it across the screen the scale
+      of the plot can be altered. With the release of the mouse button the
+      plot is redrawn using the new scale.
+      This can be used to zoom in on a section of
+      the plot. Data outside the plot is clipped.
+  <P>
+  <DT><B><FONT COLOR="#FF00FF">Keypress R</FONT></B>
+  <DD>By pressing R the plot is rescaled back to the default
+      scale of the data.
+  <P> 
+  <DT><B><FONT COLOR="#FF00FF">Keypress r</FONT></B>
+  <DD>By pressing r the plot is repainted. This is useful when scrolling
+      the page as scrolling can effect the plot in odd ways.
+  <P> 
+  <DT><B><FONT COLOR="#FF00FF">Keypress d</FONT></B>
+  <DD>This event will popup a window that will display the closest data
+      point to the cursor. Repeated pressing of the key while moving the cursor
+      will display the closest data point to the cursor.
+      A black dot will be plotted over the data point to indicate which data
+      point has been found.
+      <P>
+      Use Keypress r to refresh the plot and erase the black dots.
+      <P>
+  <DT><B><FONT COLOR="#FF00FF">Keypress D</FONT></B>
+  <DD>This event will hide the closest data point window.
+  <P>  
+  <DT><B><FONT COLOR="#FF00FF">Keypress m</FONT></B>
+  <DD>This event will popup a window that will allow the user to 
+      set the plot range by entering the xmin,xmax, ymin and ymax limits.
+      Any field left blank will be ignored. Hitting return in any field
+      will move the cursor to the next field in the list.
+  <P> 
+  <DT><B><FONT COLOR="#FF00FF">Keypress h</FONT></B>
+  <DD>This event if it occurs in Any of the popup windows will cause the
+      window to be hidden. This can be used if the popup windows are 
+      accidentally left behind after the main window has disappeared.
+  <P>
+</DL>
+
+
+</BODY> </HTML>

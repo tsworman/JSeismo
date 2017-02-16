@@ -1,0 +1,273 @@
+<HTML>
+<HEAD>
+<TITLE>Language
+</TITLE>
+</HEAD>
+<BODY>
+<H1 ALIGN=CENTER>BuildGraph Language</H1>
+The language interpreted by the BuildGraph class is (hopefully!) simple 
+and straight forward. It is made up of about 20 reserved words, some words 
+having multiple meanings depending on context. The best way to understand
+how to construct a graph definition file is to look at
+examples.
+<P>
+Context is changed using a  keyword and a { } pair. In C this would be considerd the 
+scope. Only a subset of keywords can change the context. These keywords 
+usually define an object that must be constructed from a set of definitions
+examples of such objects are fonts, axis, datasets, titles, labels etc.
+<P>
+The BuildGraph language is not complete. Some plot 
+features available in the class definitions are not available in the plot 
+language.
+<P>
+<HR>
+<H2>The Interpreter</H2>
+The language interpreter only recognises predefines keywords, numbers 
+(scientific notation is recognised), the context (scope) defining 
+braces { }, and strings delimetered by ".
+<P>
+Everything following the # characeter is interpreted as a comment. All 
+blank lines are ignored.
+<P>
+Anything else will be reported as an error.
+<HR>
+<H2>Context keywords</H2>
+To change context a keyword is followed (and encloses context commands) by 
+a pair of braces. An example of a new context is the font context.<BREAK>
+<PRE><CODE> font {
+                   style bold
+                   name "Helvetica"
+                   size 25
+                  }
+</CODE></PRE>
+The font command above might itself be enclosed in the title context or 
+label context.
+
+<DL>
+   <DT><B>GRAPH2D</B>
+   <DD>This is currently one of three main contexts (like the main 
+   procedure in C). This defines the type of graph to build. A 
+   non-interactive plot using the Graph2D class.
+   <DT><B>G2DINT</B>
+   <DD>The second type of plot to build. An interactive plot using the
+       G2Dint class.
+   <DT><B>CONTOUR</B>
+   <DD>The third type of plot to build. An interactive contour plot using the
+       Contour class.
+   <DT><B>AXIS</B>
+   <DD>Define an axis using keywords such as LABEL, AXIS, BOTTOM, TOP, LEFT,
+       RIGHT, COLOR and ATTACH.
+   <DT><B>DATA</B>
+   <DD>Define a data set, using keywords such as, URL, MARKER, COLOR.
+   <DT><B>CDATA</B>
+   <DD>Define the data grid for a contour plot.
+   <DT><B>MARKER</B>
+   <DD>In the context of a dataset this keyword will define
+       the STYLE, COLOR and SIZE of the marker to use for the data set.
+       In the context of GRAPH2D or G2DINT it should only contain
+       the URL of the marker file.
+   <DT><B>TITLE</B>
+   <DD>In the context of GRAPH2D, G2DINT or CONTOUR define the title of the plot. In 
+   the context of AXIS define the axis title. TITLE uses the keywords NAME, FONT
+   and COLOR. A title example<BREAK>
+   <PRE>title {
+                 name "This could be a plot title or an axis title"
+                 color 0 255 255
+                 font { 
+                        style plain
+                        name "TimesRoman"
+                        size 15
+                       }
+               }
+    </PRE>
+   <DT><B>LABEL</B>
+   <DD>Only to be used in the Axis context, define the axis labels, using
+   the keywords FONT and COLOR
+   <DT><B>FONT</B>
+   <DD>Define a font using the keywords SIZE, STYLE and NAME.
+   <DT><B>GRID</B>
+   <DD>Define the grid to be displayed, using the keywords ON, OFF, and 
+   COLOR.
+   <DT><B>ZERO</B>
+   <DD>Define the zero line to be displayed, using the keywords ON, OFF, and 
+   COLOR.
+   
+</DL>
+<HR>
+<H2>Keywords</H2>
+<DL>
+    <DT><B>FUNCTION</B> string
+	<DD>The function string to be parsed to the DATA ParseFunction class
+	<DT>Context
+	<DD>DATA - The function that will be used to construct the data.
+	<DD>CDATA - The function that will be used to construct the data.
+	</DL>
+    <DT><B>XRANGE</B> number number number
+	<DD>The number of points and the range of points to be used with the
+	    declared function to construct the data set.<P>
+	    <TT>xrange 100 -1.0 1.0.</TT><P>
+	    number of points is 100, the range of the data is [-1.0,1.0]
+	<DT>Context
+	<DD>DATA - The range of the data to be plotted.
+	<DD>CDATA - The x range of the data to be contoured.
+	</DL>
+    <DT><B>YRANGE</B> number number number
+	<DD>The number of points and the range of points to be used with the
+	    declared function to construct the data set.<P>
+	    <TT>yrange 100 -1.0 1.0.</TT><P>
+	    number of points is 100, the range of the data is [-1.0,1.0]
+	<DT>Context
+	<DD>CDATA - The y range of the data to be contoured.
+	</DL>
+    <DT><B>SQUARE</B>
+    <DD> The aspect ratio of the graph will be 1.
+        <DT>Context
+	<DD>GRAPH
+	<DD>G2DINT
+	<DD>CONTOUR
+	</DT>
+    <DT><B>NUMBER</B> integer
+	<DD>Number of contour levels to be plotted
+        <DT>Context
+	<DD>CONTOUR
+	</DT>	    
+    <DT><B>LOG</B>
+	<DD>Contour levels will use a log scale.
+        <DT>Context
+	<DD>CONTOUR
+	</DT>	    
+    <DT><B>LLEVELS</B> integer
+	<DD>The stride for the contour levels that have labels. If set to zero
+	    no labels will be displayed.
+        <DT>Context
+	<DD>CONTOUR
+	</DT>	    
+    <DT><B>URL</B> string
+	<DD>Should be followed by a string which is the url of the file to be 
+	loaded.
+	<DL>
+	<DT>Context
+	<DD>MARKER - the url of the marker file to load
+	<DD>DATA - the url of the data file to load.
+	</DL>
+    <DT><B>SIZE</B> integer
+    <DD>Should be followed by an integer.
+	<DL>
+	<DT>Context
+	<DD>MARKER - the size of the marker to draw.
+	<DD>FONT - the size of the font.
+	</DL>
+    <DT><B>COLOR</B> integer integer integer
+    <DD>Should be followed by 3 integers in the range 0 to 255. The values 
+    of red, green and blue.
+	<DL>
+	<DT>Context
+	<DD>FONT - Color of the text
+	<DD>DATA - Color of the plotted data
+	<DD>CDATA - Color of the contours
+	</DL>	
+    <DT><B>BACKGROUND</B> integer integer integer
+    <DD>Should be followed by 3 integers in the range 0 to 255. The values 
+    of red, green and blue.
+	<DL>
+	<DT>Context
+	<DD>GRAPH  - the background color of the applet
+	<DD>G2DINT - the background color of the applet
+	<DD>CONTOUR - the background color of the applet
+	<DD>DATA - the background color of the data window
+	<DD>CDATA - the background color of the data window
+	</DL>
+    <DT><B>NAME</B> string
+    <DD>Should be followed by a string.
+	<DL>
+	<DT>Context
+	<DD>FONT - the logical name of the font
+	<DD>DATA - the logical name of the dataset. This is the name used in the 
+	ATTACH command to attach datasets to axis.
+	<DD>TITLE - the string to display in the title of the axis or the plot.
+	</DL>
+    <DT><B>STYLE</B> integer or keyword
+    <DD>Should be followed by an integer or keyword.
+	<DL>
+	<DT>Context
+	<DD>MARKER - the integer following the STYLE keyword is the marker
+	to use while drawing the dataset.
+	<DD>FONT - should be followed by one of the following keywords PLAIN, BOLD
+	or ITALICS. In the FONT context STYLE can be repeated and
+	as in the Font class the styles become aditive. An example of a bold-italic
+	font is
+	      <PRE>font {
+	                  name "TimeRoman"
+	                  size  20
+	                  style bold
+	                  style italic
+	                  }
+	       </PRE>
+	</DL>
+    <DT><B>BOTTOM</B> integer or alone
+    <DD>Either an axis orientation command or the width of a boundary
+    of the plot. 
+	<DL>
+	<DT>Context
+	<DD>AXIS - The orientation of the plot
+	<DD>GRAPH2D - followed by an integer the width of the bottom boundary of 
+	the plot
+	</DL>
+    <DT><B>TOP</B> integer or alone
+    <DD>Either an axis orientation command or the width of a boundary
+    of the plot. 
+	<DL>
+	<DT>Context
+	<DD>AXIS - The orientation of the plot
+	<DD>GRAPH2D - followed by an integer the width of the top boundary of 
+	the plot
+	</DL>
+    <DT><B>LEFT</B> integer or alone
+    <DD>Either an axis orientation command or the width of a boundary
+    of the plot. 
+	<DL>
+	<DT>Context
+	<DD>AXIS - The orientation of the plot
+	<DD>GRAPH2D - followed by an integer the width of the left boundary of 
+	the plot
+	</DL>
+    <DT><B>RIGHT</B> integer or alone
+    <DD>Either an axis orientation command or the width of a boundary
+    of the plot. 
+	<DL>
+	<DT>Context
+	<DD>AXIS - The orientation of the plot
+	<DD>GRAPH2D - followed by an integer the width of the right boundary of 
+	the plot
+	</DL>
+    <DT><B>ON</B>
+	<DL>
+	<DT>Context
+	<DD>DATA - draw straight line segments between data points.
+	<DD>GRID - draw the grid
+	<DD>ZERO - draw the zero line 
+	</DL>
+    <DT><B>OFF</B>
+	<DL>
+	<DT>Context
+	<DD>DATA - don't draw straight line segments between data points.
+	<DD>GRID - don't draw the grid
+	<DD>ZERO - don't draw the zero line 
+	</DL>
+    <DT><B>ATTACH</B> string
+    <DD>Attach a named dataset to an axis.
+	<DL>
+	<DT>Context
+	<DD>AXIS - attach the named data set (defined in the DATA context using 
+	the NAME keyword) to the current axis.
+	</DL>
+    <DT><B>PLAIN</B>
+    <DD>Only to be used as a STYLE value in the FONT context.
+    <DT><B>BOLD</B>
+    <DD>Only to be used as a STYLE value in the FONT context.
+    <DT><B>ITALIC</B>
+    <DD>Only to be used as a STYLE value in the FONT context.
+
+</DL>
+</BODY>
+</HTML>

@@ -1,0 +1,112 @@
+#
+# This file contains the definitions to build the graph of 
+# Example 5. For the debugging output uncomment the debug keyword.
+#
+#
+
+#debug
+
+g2dint {
+
+
+ bottom  0
+ right   45
+ left    2
+ top     25
+ background 0 200 200
+ 
+ marker {
+          url "marker.txt"
+        }
+
+ title {
+        color 0 200 0
+        font {
+              style bold
+              size  20
+              name "Helvetica"
+             }
+        name "Using BuildGraph to Parse 1D functions"
+       }
+
+ data {
+       function "jn(2,x)"
+       xrange 200 0.1 50.0
+       color 200 200 200
+       name "data1"
+       background 0 0 0
+       marker {
+                style 1
+                color 200 0 0
+               }
+      }
+     
+ data {
+       function "yn(2,x)"
+       xrange 200 1.0 50.0
+       color 0 0 255
+       name "data2"
+       marker {
+                style 2
+                color 200 200 200
+               }
+      }
+       
+ data {
+       function "yn(0,x)"
+       xrange 200 1.0 50.0
+       color 0 255 255
+       name "data3"
+       marker {
+                style 3
+                color 200 200 0
+               }
+      }
+
+ axis {
+       bottom
+       attach "data1"
+       attach "data2"
+       attach "data3"
+       title {
+              font {
+                    style italic
+                    name "TimesRoman"
+                    size 25
+                   }
+              name "X_axis"
+              color 255 0 255
+             }
+        label {
+              font {
+                    style plain
+                    name "Helvetica"
+                    size 20
+                   }
+              }
+      }
+
+ axis {
+       left
+       attach "data1"
+       attach "data2"
+       attach "data3"
+       title {
+              font {
+                    style italic
+                    name "TimesRoman"
+                    size 25
+                   }
+              name "Y_axis"
+              color 255 0 255
+             }
+        label {
+              font {
+                    style plain
+                    name "Helvetica"
+                    size 20
+                   }
+              }
+      }
+
+}

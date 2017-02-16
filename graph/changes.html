@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Changes</title>
+</head>
+
+<body>
+<H3>Changes from Version 2.3</H3>
+<UL>
+  <li> Fixed bug in Markers.AddMarkers method
+  <li> Fixed stupid bug with the rotate text ImageFilter found
+       in the RTextLine class. Only byte color models would rotate text.
+  <li> Added "stride" variable in DataSet Class. This specifies the stride
+       of the data.
+  <li> Added a VectorSet class an extension of the DataSet class that allows
+       the plotting of vector fields.
+</ul>
+<H3>Changes from Version 2.2</H3>
+<UL>
+  <LI>Added the RTextLine class that allows for text rotation in multiples
+  <LI>of 90 degrees.
+  <LI>The axis class now has rotated titles on vertical axis.
+  <LI>Fixed minor bugs in the html code pointing to source
+  <LI>Added the double buffering example, example2a
+  <LI>Added the RTextLine example, example4a
+</UL>
+<H3>Changes from Version 2.1</H3>
+<UL>
+  <LI>The graph class library is now compiled as a package called
+      "graph"
+   <LI>Some method names have changed to be consistent across all classes.
+   <LI>The markers methods have been moved into the Marker class
+   <LI>It is now possible for markers to be defined within java programs
+   <LI>The BuildGraph class recognises most additions to the graph package.
+   <LI>The BuildGraph class now correctly plots more than one dataset.
+   <LI>Numerous error corrections. But the main bug fixed is the
+       display problem on Windows. The package should work fine on
+       Windows, Macs, Suns, Dec Alphas and Sgis. All the machines
+       I have managed to test the package on.
+   <LI>The rubber-band drag box now works correctly in class G2Dint.
+       The colors are XORed correctly.
+   <LI>All the documentation is produced by <i>javadoc</i> 
+</UL>
+<P>
+Additions:
+<P>
+<UL>
+   <li>All the classes have new methods and variables to control behaviour.
+       <UL>
+       <LI>The graph backgound color can be defined
+       <LI>The data window background color can be defined
+       <LI>Plots can force an aspect ratio of 1. This means circles will
+	   appear as circles not ellipses.
+       <LI>Textline class has a parseDouble() method to allow the formating
+	   doubles when converted to strings.
+       </UL>
+   <LI>A SpecialFunction class as an extension to the java.lang.Math class.
+       Though  all functions are defined in the Java language.
+   <LI>The SpecialFunction class contains the definition of Physical
+       constants. Such as Boltzman constant, Speed of Light, Gravitational
+       Constant, Gas Constant etc. This is incomplete and reflects more
+       my own interests.
+   <LI>The SpecialFunction class defines the following functions
+       log10(), sinh(), cosh(), tanh(), asinh(), acosh(), atanh(),
+       j0(), j1(), jn(), y0(), y1(), and yn().
+   <LI>The ParseFunction class. This class will parse a function
+       definition containing at most 3 independent variables. The getResult
+       methods will return the function value.
+</UL>
+<HR>
+<H3>Changes from Version 2.0</H3>
+A Contour Class (as an extension of G2Dint) has been added.
+<P>
+The G2Dint class has a new popup window that allows the user to modify
+the plot range manually. All popup windows can be closed by hitting the
+'h' key in the window. The getClosestPoint method now works correctly.
+<P>
+The event interface has been changed to use the predefined Component
+event methods. This makes it easy for child classes to catch events without
+having to redefine the entire event handler.
+<P>
+The LoadData class has had a number of methods renamed though functionality
+remains the same.
+<P>
+The BuildGraph class does not have the ability to call the Contour class.
+<H3>Changes from Version 1.0</H3>
+Not as many changes as I had hoped - as I moved to Australia at the end of
+1995, and found myself without a job (Still no job), without access to a java
+compiler or java viewer. Some of these problems have been slowly remedied but
+it does mean that some of the changes have not been as extensively tested as they should.
+<P>
+I apologize to everyone who has sent me mail that I have failed to answer.
+As I have limited access to computer resources I have found I have had to
+maximise my time - answering questions/complaints
+has low priority at the moment. Sorry, though don't get me wrong
+I like to hear from people. So please send mail if you have found the
+class library usefull (just don't expect a quick response).
+<P>
+All classes and examples have been tested using Netscape 2.0b6 on an SGI.
+How they will perform on other machines I do not know.
+<H4>Bug Fixes</H4>
+The only important bug fix is that the plot will correctly redraw when obscured
+or scrolled. The problem was a stupid missunderstanding on my part.
+<H4>Additions</H4>
+<UL>
+  <LI>A new class <A HREF="LoadData.html">LoadData</A>. This class
+      loads data from a file, but does it from a seperate thread. This means
+      that the applet will not freeze while data is being loaded. The class
+      will also force the plot to refreshed as data is loaded.
+  <LI>Additions to the <A HREF="G2Dint.html">G2Dint</A> class are-
+      <UL>
+	<LI>a popup
+            frame that displays the cursor position in plot coordinates.
+	<LI>a popup
+            frame that displays the data point closest to the cursor.
+      </UL>
+  <LI>A new class <A HREF="TextLine.html">TextLine</A>. This class will
+      draw a line of text at a given pixel position. It combines some of the
+      methods of Font and FontMetrics. The Font and color for the line of text
+      can be specified. The text is parsed so that subscripting and
+      superscripting commands are recognised.
+  <LI>A new class <A HREF="ScanWord.html">ScanWord</A>. This is an extension
+      of the StreamTokenizer class but allows Keywords to be defined and
+      recognised in the input stream.
+  <LI>A new class <A HREF="BuildGraph.html">BuildGraph</A> an extension of the
+      ScanWord class.  This class reads a plot description file and can build
+      the plot and load the data. This means without learning Java programming
+      general plots can be incorporated into a web page simply.
+      <A HREF="example5.html">Example 5</A> is an example of using
+      the BuildGraph class.
+</UL>
+
+<hr>
+<address><A HREF="mailto:leighb@usq.edu.au"><IMG SRC="/images/mail.xbm" align="center"></A> Leigh Brookshaw</address>
+<!-- hhmts start -->
+Last modified: Wed Oct 23 13:09:43 EST 1996
+<!-- hhmts end -->
+</body> </html>

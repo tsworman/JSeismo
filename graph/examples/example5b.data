@@ -1,0 +1,81 @@
+#
+# This file contains the definitions to build the graph of 
+# Example 5. For the debugging output uncomment the debug keyword.
+#
+#
+
+#debug
+
+contour {
+
+
+ bottom  0
+ right   75
+ left    2
+ top     25
+ background 0 200 200
+ square
+ number  10
+ llevels 3
+ 
+ title {
+        color 0 200 0
+        font {
+              style bold
+              size  20
+              name "Helvetica"
+             }
+        name "Using BuildGraph to Parse 2D functions"
+       }
+
+ cdata {
+       function "((x+y)^2)*exp( -( (x^2)+(y^2) ))"
+       xrange 50 -2.0 2.0
+       yrange 50 -2.0 2.0
+
+       color 200 200 200
+       name "data1"
+       background 0 0 0
+      }
+
+ axis {
+       bottom
+       title {
+              font {
+                    style italic
+                    name "TimesRoman"
+                    size 25
+                   }
+              name "X_axis"
+              color 255 0 255
+             }
+        label {
+              font {
+                    style plain
+                    name "Helvetica"
+                    size 20
+                   }
+              }
+      }
+
+ axis {
+       left
+       title {
+              font {
+                    style italic
+                    name "TimesRoman"
+                    size 25
+                   }
+              name "Y_axis"
+              color 255 0 255
+             }
+        label {
+              font {
+                    style plain
+                    name "Helvetica"
+                    size 20
+                   }
+              }
+      }
+
+}

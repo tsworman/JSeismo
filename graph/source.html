@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML> <HEAD>
+<TITLE>Source</TITLE>
+</HEAD>
+
+<BODY>
+<H1>Everything</H1>
+To download it all, documentation, source and pre-compiled code
+download the <A HREF="graph.tar.gz">gzipped tar file</A>.
+
+<H1>Java Class Source</H1>
+<DL>
+  <DT><A HREF="source/Graph2D.java">Graph2D.java</A>
+  <DD> The main plotting canvas. This class controls the look and feel
+       of the graph.
+  <DT><A HREF="source/G2Dint.java">G2Dint.java</A>
+  <DD> An extension of the Graph2D class with event handling and graphics
+       input.
+  <DT><A HREF="source/DataSet.java">DataSet.java</A>
+  <DD> The class that contains the data.
+  <DT><A HREF="source/VectorSet.java">VectorSet.java</A>
+  <DD> An extension of the DataSet class to allow vector fields to be plotted.
+  <DT><A HREF="source/LoadData.java">LoadData.java</A>
+  <DD> This class will use a seperate thread to load data into a data set
+      from a a passed URL.
+  <DT><A HREF="source/Axis.java">Axis.java</A>
+  <DD> The class that calculates and draws the axis     
+  <DT><A HREF="source/TextLine.java">TextLine.java</A>
+  <DD> A class to format text on a line. It combines the Font, Color,
+       and FontMetrics with the String.
+  <DT><A HREF="source/RTextLine.java">RTextLine.java</A>
+  <DD> An extension to the TextLine class that allows text to be rotated.
+       The rotation is only in increments of 90&#176;.
+       <small>(This is only for clarity
+       of text. The ImageFilter used to rotate the text could be extended
+       for arbitrary rotation.)</small>
+  <DT><A HREF="source/Markers.java">Markers.java</A>
+  <DD> A class to either create or load from a URL stroked markers that can be
+       placed at data points
+  <DT><A HREF="source/ScanWord.java">ScanWord.java</A>
+  <DD> An extension to the StreamTokenizer class to allow KeyWords to be 
+       recognised in the stream and returned as tokens.
+  <DT><A HREF="source/BuildGraph.java">BuildGraph.java</A>
+  <DD> An extension to the ScanWord class that can parse an input stream
+       and construct an entire plot based on the commands in the stream.
+       This class allows plots to be constructed from simple scripts.
+  <DT><A HREF="source/Contour.java">Contour.java</A>
+  <DD> An extension to the G2Dint class that can plot and label contours.
+       The actual contour curves are calculated by the 
+       <A HREF="source/IsoCurve.java">IsoCurve</A> class.
+  <DT><A HREF="source/ScanString.java">ScanString.java</A>
+  <DD> A class to allow a string to be tokenized into numbers and predefined
+       keywords.
+  <DT><A HREF="source/ParseFunction.java">ParseFunction.java</A>
+  <DD> An extension to the ScanString class that will parse a function
+      definition of at most 3 independent variables and return the result
+      as a double.
+  <DT><A HREF="source/SpecialFunction.java">SpecialFunction.java</A>
+  <DD>An extension of the java.lang.Math class that defines some special
+      function (such as Hyperbolic functions, Bessel functions) and
+      defines some physical constants (such as Gravitation constant,
+      mass of proton, Stefan-Boltzman constant etc.)
+</DL>
+<HR>
+<H1>Java Applet Source</H1>
+<DL>
+  <DT><A HREF="examples/example1.java">example1</A>
+  <DD> An applet that plots data it has calculated
+  <DT><A HREF="examples/example1a.java">example1a</A>
+  <DD> An applet that repeats example1 but plots two graphs side by side.
+  <DT><A HREF="examples/example2.java">example2</A>
+  <DD> An example of using Threads and the Graphing Class library to produce
+       a StripChart.
+  <DT><A HREF="examples/example2a.java">example2a</A>
+  <DD> An example of using Threads, double buffering and the Graphing
+       Class library to produce a flicker free StripChart.
+  <DT><A HREF="examples/example3.java">example3</A>
+  <DD> An example of plotting data loaded from a URL and allowing the user
+       to rescale the plot.
+  <DT><A HREF="examples/example4.java">example4</A>
+  <DD> An example of using the TextLine class.
+  <DT><A HREF="examples/graph.java">example5</A>
+  <DD> An example of using the BuildGraph class. Using this precompiled
+       applet a user can incorporate any plot into a web document
+  <DT><A HREF="examples/example6.java">example6</A>
+  <DD> An example of using the Contour class.
+  <DT><A HREF="examples/parse1d.java">example7</A>
+  <DD> An example of using the ParseFunction class to plot a 1D function.
+  <DT><A HREF="examples/parse2d.java">example8</A>
+  <DD> An example of using the ParseFunction classK to contour a 2D function..
+</DL>
+<HR>
+<H1>Other files</H1>
+<DL>
+  <DT><A HREF="examples/example5.data">example5.data</A>
+  <DD> Here is the input file that is used to build the plot in Example 5.
+  <DT><A HREF="examples/example5a.data">example5a.data</A>
+  <DD> Here is the input file that is used to build the plot in Example 5a.
+  <DT><A HREF="examples/example5b.data">example5b.data</A>
+  <DD> Here is the input file that is used to build the plot in Example 5b.
+  <DT><A HREF="examples/elliptical.data">elliptical.data</A>
+  <DD> Here is the data file that is plotted in Example 2 and Example 5.
+  <DT><A HREF="examples/marker.txt">marker.txt</A>
+  <DD> The default marker description file.
+  <DT><A HREF="examples/parser.java">parser.java</A>
+  <DD> A stand alone java program that uses the ParseFunction class
+      to parse the command line. Used to debug the ParseFunction and
+      SpecialFunction class. Can Also be used to return values of
+      function strings.
+</DL>
+<hr>
+<address><A HREF="mailto:leighb@usq.edu.au"><IMG SRC="/images/mail.xbm" align="center"></A> Leigh Brookshaw</address>
+<!-- hhmts start -->
+Last modified: Tue Sep 24 09:46:55 EST 1996
+<!-- hhmts end -->
+</body> </html>
+
